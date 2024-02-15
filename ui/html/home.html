@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/style/style.css">
+	<link rel="shortcut icon" href="/static/icon/favicon.ico">
+	<title> Groupie-Tracker</title>
+</head>
+
+<body>
+
+
+	<div class="wrapper">
+		<header class="header">
+			<div class="kenburns-top"></div>
+			<div class="header__todo">
+
+				<a class="header__logo" target="_blank"
+					href="https://github.com/01-edu/public/tree/master/subjects/groupie-tracker">
+					<button data-text="Awesome" class="button">
+						<span class="actual-text">&nbsp;Groupie&nbsp;</span>
+						<span class="hover-text" aria-hidden="true">&nbsp;Groupie&nbsp;</span>
+
+					</button>
+					<br>
+					<button data-text="Awesome" class="button">
+						<span class="actual-text">&nbsp;Tracker&nbsp;</span>
+						<span class="hover-text" aria-hidden="true">&nbsp;Tracker&nbsp;</span>
+
+					</button>
+				</a>
+				<nav class=" menu">
+					<ul class="menu__list">
+						<li><a class="menu__link" target="_blank" href="https://web.telegram.org">telegram</a></li>
+						<li><a class="menu__link" target="_blank" href="https://www.instagram.com/">instagram</a></li>
+						<li><a class="menu__link" target="_blank" href="https://vk.com/">VK</a></li>
+						<li><a class="menu__link" target="_blank" href="https://www.tiktok.com">tiktok</a></li>
+					</ul>
+					<div class="hamburger-menu">
+						<input id="menu__toggle" type="checkbox">
+						<label class="menu__btn" for="menu__toggle">
+							<span></span>
+						</label>
+						<ul class="menu__box">
+							<li>
+								<a class="menu__item" target="_blank"
+									href="https://github.com/01-edu/public/tree/master/subjects/groupie-tracker">
+									<button data-text="Awesome" class="button">
+										<span class="actual-text">&nbsp;Groupie&nbsp;</span>
+
+
+									</button>
+									<br>
+									<button data-text="Awesome" class="button">
+										<span class="actual-text">&nbsp;Tracker&nbsp;</span>
+
+
+									</button>
+								</a>
+							</li>
+							<li><a class="menu__item" target="_blank" href="https://web.telegram.org">telegram</a></li>
+							<li><a class="menu__item" target="_blank" href="https://www.instagram.com/">instagram</a></li>
+							<li><a class="menu__item" target="_blank" href="https://vk.com/">VK</a></li>
+							<li><a class="menu__item" target="_blank" href="https://www.tiktok.com">tiktok</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+
+			<div class="header__item">
+				<h1 class="header__title">Groupie-Tracker</h1>
+				<p class="header__text">- consists on receiving a given API and manipulate the data contained in it, in order to
+					create a site, displaying the information.</p>
+			</div>
+			<div class="custom-shape-divider-bottom-1695103323">
+				<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+					<path
+						d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+						opacity=".25" class="shape-fill"></path>
+					<path
+						d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+						opacity=".5" class="shape-fill"></path>
+					<path
+						d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+						class="shape-fill"></path>
+				</svg>
+			</div>
+		</header>
+
+		<main class="content">
+
+
+
+
+
+			<nav class="nav_bar">
+				<div class="containeri">
+
+
+					<div class="input-container">
+						<div class="input-content">
+							<div class="input-dist">
+								<div class="input-type">
+									<input class="input-is" list="output-info" placeholder=" Search..." id="searchbar"
+										onkeyup="search_art()">
+								</div>
+							</div>
+							<datalist id="output-info">
+								{{range $index, $element := .}}
+								<option value="{{ $element.Name}}"></option>
+								<option value="{{ $element.CreationDate}} ({{$element.Name}})"></option>
+								<option value="{{ $element.FirstAlbum}} ({{$element.Name}})"></option>
+								{{range .Members}}
+								<option value="{{.}} ({{$element.Name}})"></option>
+								{{end}}
+								{{range $k, $v:= .Related}}
+								<option value="{{$k}}"></option>
+								{{end}}
+								{{end}}
+							</datalist>
+						</div>
+					</div>
+
+
+
+
+
+
+				</div>
+				<div class="container">
+					<div class="artists-info">
+						<section class="artists">
+							{{range .}}
+							<div class="artist">
+								<a href="/artist/{{.Id}}">
+									<div id="text" class="card">
+										<div class="card2">
+											<img src="{{.Image}}" class="card-img" alt="error">
+											<h5 class="title ">{{.Name}}</h5>
+											<p hidden>{{range .Members}} {{.}} {{end}} {{.FirstAlbum }} {{.CreationDate}} {{range $key, $val
+												:= .Related}} {{$key}} {{end}}
+											<p>
+										</div>
+
+									</div>
+								</a>
+
+							</div>
+							{{end}}
+						</section>
+					</div>
+				</div>
+
+		</main>
+		<footer>
+			<div class="footer_plus">
+				<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+					<path
+						d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+						opacity=".25" class="shape-fill" fill="#9E30A9" fill-opacity="1"></path>
+					<path
+						d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+						opacity=".5" class="shape-fill" fill="#9E30A9" fill-opacity="1"></path>
+					<path
+						d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+						class="shape-fill" fill="#9E30A9" fill-opacity="1"></path>
+				</svg>
+			</div>
+			<div class="container">
+				<div class="footer_text">
+					<button class="Btn">
+						<span class="svgContainer">
+							<a target="_blank" href="https://01.alem.school/git/gkarakha/groupie-trackers"><svg fill="white"
+									viewBox="0 0 496 512" height="1.6em">
+									<path
+										d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+									</path>
+								</svg></a>
+						</span>
+						<span class="BG"></span>
+					</button>
+					<div class="footer_title"> <a target="_blank" href="https://01.alem.school/git/gkarakha">gkarakha </a> © <a
+							target="_blank" href="https://01.alem.school/git/abakhytzh">abakhytzh</a> </div>
+				</div>
+			</div>
+
+		</footer>
+
+	</div>
+	<script>
+
+		function search_art() {
+			let input = document.getElementById('searchbar').value
+			input = input.toLowerCase();
+			let x = document.getElementsByClassName('artist');
+			const myRe = /\(\w+\s*\w*\)/;
+			for (i = 0; i < x.length; i++) {
+				const text = x[i].getElementsByClassName("card")
+				const name = text.text.innerHTML
+				let input1 = input.replace(myRe, '')
+				if (!name.toLowerCase().includes(input1)) {
+					x[i].style.display = "none";
+				}
+				else {
+					x[i].style.display = "block";
+				}
+			}
+		}
+	</script>
+
+
+</body>
+
+</html>
